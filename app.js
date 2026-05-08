@@ -120,8 +120,8 @@ const Tree = (arr) => {
         }
 
         while (head.rightNode || head.leftNode) {
-            if (value === head.value) break;
             prev = head;
+            if (value === head.value) break;
             if (value < head.value) {
                 prev = head;
                 head = head.leftNode;
