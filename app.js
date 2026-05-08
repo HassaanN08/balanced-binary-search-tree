@@ -51,15 +51,14 @@ const checkForBalance = (root) => {
     let h2 = checkForBalance(root.rightNode);
 
     if (h1 - h2 < -1 || h1 - h2 > 1 || h1 === false || h2 === false) {
-        console.log(false);
         return false;
     }
 
     h1++;
     h2++;
 
-    if (h1 >= h2 && (h1 - h2) <= 1) return h1;
-    else if (h2 > h1 && (h2 - h1) == 1) return h2;
+    if (h1 >= h2) return h1;
+    else if (h2 > h1) return h2;
 }
 
 const Tree = (arr) => {

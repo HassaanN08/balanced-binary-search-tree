@@ -39,7 +39,7 @@ built.insert(278);
 prettyPrint(built.getRoot());
 console.log('Height: ' + built.height(built.getRoot().value));
 console.log(built.isBalanced());
-built.deleteItem(104)
+/*built.deleteItem(104)
 built.rebalance();
 console.log('Height: ' + built.height(built.getRoot().value));
 console.log(built.isBalanced());
@@ -47,4 +47,4 @@ prettyPrint(built.getRoot());
 built.levelOrderForEach((item) => console.log('Level Order: ' + item));
 built.preOrderForEach((item) => console.log('Pre Order: ' + item));
 built.inOrderForEach((item) => console.log('In Order: ' + item));
-built.PostOrderForEach((item) => console.log('Post Order: ' + item));
+built.PostOrderForEach((item) => console.log('Post Order: ' + item));*/
