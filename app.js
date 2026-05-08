@@ -34,23 +34,24 @@ const Queue = () => {
     return { enque, deque, getHeadIndex, getTailIndex, getQueue }
 }
 
-const getHeight = (root, index = 0, arr = []) => {
-    if (!root) return;
-
-    arr.push(index);
-
-    index++;
+const getHeight = (root) => {
+    if (!root) return -1;
     
-    getHeight(root.leftNode, index, arr);
-    getHeight(root.rightNode, index, arr);
+    let h1 = 1 + getHeight(root.leftNode);
+    let h2 = 1 + getHeight(root.rightNode);
 
-    let maxValue = arr[0];  //maxValue will be the height
+    if (h1 >= h2) return h1;
+    else return h2;
+}
 
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] > maxValue) maxValue = arr[i];
-    }
+const checkForBalance = (root) => {
+    if (!root) return -1;
+    
+    let h1 = 1 + checkForBalance(root.leftNode);
+    let h2 = 1 + checkForBalance(root.rightNode);
 
-    return maxValue;
+    if (h1 >= h2 && (h1 - h2) <= 1) return h1;
+    else if (h2 > h1 && (h2 - h1) == 1) return h2;
 }
 
 const Tree = (arr) => {
@@ -204,8 +205,8 @@ const Tree = (arr) => {
 
         if (!head) return;
 
-        inOrderForEach(callback, head.rightNode);
-        inOrderForEach(callback, head.leftNode);
+        PostOrderForEach(callback, head.rightNode);
+        PostOrderForEach(callback, head.leftNode);
         callback(head.value);
     }
 
@@ -214,12 +215,9 @@ const Tree = (arr) => {
 
         while(head) {
             if (head.value === value) break;
-            if (value < head.value) {
-                head = head.leftNode;
 
-            } else if (value > head.value) {
-                head = head.rightNode;
-            }
+            if (value < head.value) head = head.leftNode;
+            else if (value > head.value) head = head.rightNode;
         }
 
         if (!head) return undefined;
@@ -243,24 +241,15 @@ const Tree = (arr) => {
         return undefined;
     }
 
-    const isBalanced = (head = root) => {
-        if (!head) return null;
-        let left = 0;
-        let right = 0;
+    const isBalanced = () => {
+        
+        let head = root;
 
-        if (head.leftNode) left = getHeight(head.leftNode);
-        if (head.rightNode) right = getHeight(head.rightNode);
+        let h1 = getHeight(head);
+        let h2 = checkForBalance(head);
 
-        let difference = left - right;
-
-        if (difference > 1 || difference < -1) {
-            return false;
-        }
-
-        isBalanced(head.leftNode);
-        isBalanced(head.rightNode);
-
-        return true;
+        if (h1 != h2) return false;
+        else return true;
     }
 
     const rebalance = () => {

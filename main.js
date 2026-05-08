@@ -2,7 +2,7 @@ import Tree from "./app.js";
 
 const genArr = () => {
     let arr = [];
-    let randomNum = Math.floor(Math.random() * 10) + 1;
+    let randomNum = Math.floor(Math.random() * 100) + 1;
 
     for (let i = 0; i <= randomNum; i++) {
         let randomNum2 = Math.floor(Math.random() * (100 - 1)) + 1;
@@ -38,8 +38,8 @@ built.insert(517);
 built.insert(278);
 prettyPrint(built.getRoot());
 console.log('Height: ' + built.height(built.getRoot().value));
-built.deleteItem(104)
 console.log(built.isBalanced());
+built.deleteItem(104)
 built.rebalance();
 console.log('Height: ' + built.height(built.getRoot().value));
 console.log(built.isBalanced());
