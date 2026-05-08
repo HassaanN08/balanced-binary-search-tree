@@ -45,12 +45,20 @@ const getHeight = (root) => {
 }
 
 const checkForBalance = (root) => {
-    if (!root) return -1;
+    if (!root) return 0;
     
-    let h1 = 1 + checkForBalance(root.leftNode);
-    let h2 = 1 + checkForBalance(root.rightNode);
+    let h1 = checkForBalance(root.leftNode);
+    let h2 = checkForBalance(root.rightNode);
 
-    if (h1 === NaN || !h2 === NaN) return false;
+    if (h1 - h2 < -1 || h1 - h2 > 1 || h1 === false || h2 === false) {
+        console.log(false);
+        return false;
+    }
+
+    h1++;
+    h2++;
+
+    console.log(h1, h2);
 
     if (h1 >= h2 && (h1 - h2) <= 1) return h1;
     else if (h2 > h1 && (h2 - h1) == 1) return h2;
