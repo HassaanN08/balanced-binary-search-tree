@@ -50,6 +50,8 @@ const checkForBalance = (root) => {
     let h1 = 1 + checkForBalance(root.leftNode);
     let h2 = 1 + checkForBalance(root.rightNode);
 
+    if (!h1 || !h2) return false;
+
     if (h1 >= h2 && (h1 - h2) <= 1) return h1;
     else if (h2 > h1 && (h2 - h1) == 1) return h2;
 }
@@ -245,11 +247,10 @@ const Tree = (arr) => {
         
         let head = root;
 
-        let h1 = getHeight(head);
-        let h2 = checkForBalance(head);
+        let h = checkForBalance(head);
 
-        if (h1 != h2) return false;
-        else return true;
+        if (h) return true;
+        else return h;
     }
 
     const rebalance = () => {

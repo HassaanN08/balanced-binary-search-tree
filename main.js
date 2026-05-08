@@ -2,7 +2,7 @@ import Tree from "./app.js";
 
 const genArr = () => {
     let arr = [];
-    let randomNum = Math.floor(Math.random() * 100) + 1;
+    let randomNum = Math.floor(Math.random() * 10) + 1;
 
     for (let i = 0; i <= randomNum; i++) {
         let randomNum2 = Math.floor(Math.random() * (100 - 1)) + 1;
@@ -12,7 +12,7 @@ const genArr = () => {
     return arr;
 }
 
-const built = Tree(genArr());
+const built = Tree([37, 93]);
 
 const prettyPrint = (node, prefix = '', isLeft = true) => {
   if (node === null || node === undefined) {
