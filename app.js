@@ -249,8 +249,8 @@ const Tree = (arr) => {
 
         let h = checkForBalance(head);
 
-        if (h) return true;
-        else return h;
+        if (h != false) return true;
+        else return false;
     }
 
     const rebalance = () => {
