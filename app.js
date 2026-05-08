@@ -45,7 +45,7 @@ const getHeight = (root) => {
 }
 
 const checkForBalance = (root) => {
-    if (!root) return 0;
+    if (!root) return -1;
     
     let h1 = checkForBalance(root.leftNode);
     let h2 = checkForBalance(root.rightNode);
@@ -57,8 +57,6 @@ const checkForBalance = (root) => {
 
     h1++;
     h2++;
-
-    console.log(h1, h2);
 
     if (h1 >= h2 && (h1 - h2) <= 1) return h1;
     else if (h2 > h1 && (h2 - h1) == 1) return h2;
@@ -215,8 +213,8 @@ const Tree = (arr) => {
 
         if (!head) return;
 
-        PostOrderForEach(callback, head.rightNode);
         PostOrderForEach(callback, head.leftNode);
+        PostOrderForEach(callback, head.rightNode);
         callback(head.value);
     }
 
