@@ -119,9 +119,33 @@ const Tree = (arr) => {
             } else return undefined;
         }
 
+        if (head.value === value) {
+            let previous;
+            if (head.leftNode && head.rightNode) {
+                let newHead = head.rightNode;
+
+                if (newHead.leftNode) {
+                    while (newHead.leftNode) {
+                        previous = newHead;
+                        newHead = newHead.leftNode;
+                    }
+
+                    head.value = newHead.value;
+                    previous.leftNode = null;
+                } else {
+                    head.value = newHead.value;
+                    head.rightNode = newHead.rightNode;
+                }
+            } else if (!head.leftNode) {
+                root = head.rightNode;
+            } else if (!head.rightNode) {
+                root = head.leftNode;
+            }
+        }
+
         while (head.rightNode || head.leftNode) {
-            prev = head;
             if (value === head.value) break;
+            prev = head;
             if (value < head.value) {
                 prev = head;
                 head = head.leftNode;
