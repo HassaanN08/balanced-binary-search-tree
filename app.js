@@ -141,6 +141,8 @@ const Tree = (arr) => {
             } else if (!head.rightNode) {
                 root = head.leftNode;
             }
+
+            return;
         }
 
         while (head.rightNode || head.leftNode) {
